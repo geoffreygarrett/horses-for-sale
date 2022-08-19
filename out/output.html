@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html>
+  <head><title>HTML Pandas Dataframe with CSS</title>
+  <script src="script.js"></script>
+  </head>
+  <link rel="stylesheet" type="text/css" href="df_style.css"/>
+  <body>
+    <table border="1" class="dataframe mystyle">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>img1</th>
+      <th>gender</th>
+      <th>age</th>
+      <th>height</th>
+      <th>breed</th>
+      <th>price</th>
+      <th>driving_time</th>
+      <th>location</th>
+      <th>listing_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td><a href="https://www.junkmail.co.za/pets/horses-and-ponies/western-cape/vredenburg/urgent-sad-sale-saddle-bred-mare/59456364b3634633992e3c066a2f16d8" rel="noopener noreferrer" target="_blank">Urgent Sad Sale - Saddle Bred Mare</a></td>
+      <td><img src="https://junkmailimages.blob.core.windows.net/large/7cf98b86848e48bebac3c8c147416a15.jpg?timestamp=637965166839722447" alt="image" style="width:100px;height:100px;"></td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>14 k</td>
+      <td>2 h 53 m</td>
+      <td>Vredenburg, 7380, South Africa</td>
+      <td>June 13 2022</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td><a href="https://www.junkmail.co.za/pets/horses-and-ponies/western-cape/vredenburg/urgent-sad-sale-boerperd-pinto-mare/d9c5b0b52f984d0db94f880a39f57f95" rel="noopener noreferrer" target="_blank">Urgent Sad Sale - Boerperd/ Pinto mare</a></td>
+      <td><img src="https://junkmailimages.blob.core.windows.net/large/18f2027add17497a8c0685471a218e56.jpg?timestamp=637965166842642516" alt="image" style="width:100px;height:100px;"></td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>14 k</td>
+      <td>2 h 53 m</td>
+      <td>Vredenburg, 7380, South Africa</td>
+      <td>June 13 2022</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td><a href="https://www.junkmail.co.za/pets/horses-and-ponies/western-cape/albertinia/boerperd-mare-for-sale-6-years-old/a5cc8b19da1940d8b3322d42def3ed68" rel="noopener noreferrer" target="_blank">Boerperd mare for sale 6 years old</a></td>
+      <td><img src="https://junkmailimages.blob.core.windows.net/large/88791ba16fcc4d40aecc18dbcf1e244c.jpg?timestamp=637965166869847214" alt="image" style="width:100px;height:100px;"></td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>15 k</td>
+      <td>2 h 58 m</td>
+      <td>Albertinia, 6695, South Africa</td>
+      <td>July 29 2022</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td><a href="https://www.junkmail.co.za/pets/horses-and-ponies/western-cape/malmesbury/horse-for-sale/a7499768c8484ac3930058e4bad76cd3" rel="noopener noreferrer" target="_blank">Horse for sale</a></td>
+      <td><img src="https://junkmailimages.blob.core.windows.net/large/eb96b223f3174f93be70f7b75d2788da.jpg?timestamp=637965166988614733" alt="image" style="width:100px;height:100px;"></td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>15 k</td>
+      <td>2 h 04 m</td>
+      <td>Malmesbury, 7300, South Africa</td>
+      <td>March 08 2022</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td><a href="https://www.junkmail.co.za/pets/horses-and-ponies/western-cape/worcester/gorgeous-appaloosa-gelding/8b073f0522814d3b81527ff2b208dc5a" rel="noopener noreferrer" target="_blank">Gorgeous appaloosa gelding</a></td>
+      <td><img src="https://junkmailimages.blob.core.windows.net/large/bfca3b79dfed47d5b3e0e09dfdeedede.jpg?timestamp=637965167072457483" alt="image" style="width:100px;height:100px;"></td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>15 k</td>
+      <td>1 h 21 m</td>
+      <td>Worcester, 6850, South Africa</td>
+      <td>October 14 2021</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td><a href="https://secure.equinesa.net/horses-for-sale/detail/41471" rel="noopener noreferrer" target="_blank">Two Moons Merlin's Freedom</a></td>
+      <td><img src="https://secure.equinesa.net/assets/uploads/classifieds/img/breeds/appaloosa/41471-Photo1_frame.jpg" alt="image" style="width:100px;height:100px;"></td>
+      <td>Gelding</td>
+      <td>10</td>
+      <td>16.1HH (1.65m) Horse</td>
+      <td>Appaloosa</td>
+      <td>15 k</td>
+      <td>1 h 54 m</td>
+      <td>Wellington, 7655, South Africa</td>
+      <td>October 09 2021</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td><a href="https://secure.equinesa.net/horses-for-sale/detail/41577" rel="noopener noreferrer" target="_blank">Fynbos Emigrant</a></td>
+      <td><img src="https://secure.equinesa.net/assets/uploads/classifieds/img/breeds/boerperd_sa/41577-Photo1_frame.jpg" alt="image" style="width:100px;height:100px;"></td>
+      <td>Gelding</td>
+      <td>16</td>
+      <td>15.0HH (1.52m)</td>
+      <td>SA Boerperd</td>
+      <td>25 k</td>
+      <td>1 h 41 m</td>
+      <td>Paarl, South Africa</td>
+      <td>February 15 2022</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td><a href="https://secure.equinesa.net/horses-for-sale/detail/41674" rel="noopener noreferrer" target="_blank">Wine Hostess</a></td>
+      <td><img src="https://secure.equinesa.net/assets/uploads/classifieds/img/breeds/thoroughbred/41674-Photo1_frame.jpg" alt="image" style="width:100px;height:100px;"></td>
+      <td>Mare</td>
+      <td>8</td>
+      <td>16.0HH (1.62m)</td>
+      <td>Thoroughbred</td>
+      <td>30 k</td>
+      <td>1 h 29 m</td>
+      <td>Cape Town, South Africa</td>
+      <td>August 03 2022</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td><a href="https://secure.equinesa.net/horses-for-sale/detail/41629" rel="noopener noreferrer" target="_blank">Tyris & Nguni</a></td>
+      <td><img src="https://secure.equinesa.net/assets/uploads/classifieds/img/breeds/appaloosa/41629-Photo1_frame.jpg" alt="image" style="width:100px;height:100px;"></td>
+      <td>Gelding</td>
+      <td>7</td>
+      <td>15.0HH (1.52m)</td>
+      <td>Appaloosa X Percheron</td>
+      <td>45 k</td>
+      <td>5 h 02 m</td>
+      <td>Plettenberg Bay, South Africa</td>
+      <td>July 15 2022</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td><a href="https://secure.equinesa.net/horses-for-sale/detail/41543" rel="noopener noreferrer" target="_blank">Blu Jay Blaze</a></td>
+      <td><img src="https://secure.equinesa.net/assets/uploads/classifieds/img/breeds/quarter_horse/41543-Photo1_frame.jpg" alt="image" style="width:100px;height:100px;"></td>
+      <td>Gelding</td>
+      <td>5</td>
+      <td>15.0HH (1.52m)</td>
+      <td>Quarter Horse</td>
+      <td>55 k</td>
+      <td>1 h 28 m</td>
+      <td>Ottery, Cape Town, 7808, South Africa</td>
+      <td>January 19 2022</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td><a href="https://www.junkmail.co.za/pets/horses-and-ponies/eastern-cape/cape-st-francis/friesian-colt-for-sale/eaeacc5a1a484d27b9dca581bb2fe239" rel="noopener noreferrer" target="_blank">Friesian colt for sale</a></td>
+      <td><img src="https://junkmailimages.blob.core.windows.net/large/5eb661a0d6064f41953e0bdf3229d34d.jpg?timestamp=637965166894449587" alt="image" style="width:100px;height:100px;"></td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>64 k</td>
+      <td>6 h 52 m</td>
+      <td>Cape St Francis, 6313, South Africa</td>
+      <td>August 18 2022</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td><a href="https://secure.equinesa.net/horses-for-sale/detail/41624" rel="noopener noreferrer" target="_blank">Wenners Maximus</a></td>
+      <td><img src="https://secure.equinesa.net/assets/uploads/classifieds/img/breeds/boerperd_sa/41624-Photo1_frame.jpg" alt="image" style="width:100px;height:100px;"></td>
+      <td>Gelding</td>
+      <td>5</td>
+      <td>15.2HH (1.57m) Still Growing</td>
+      <td>SA Boerperd</td>
+      <td>65 k</td>
+      <td>3 h 48 m</td>
+      <td>George, South Africa</td>
+      <td>May 11 2022</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td><a href="https://secure.equinesa.net/horses-for-sale/detail/41544" rel="noopener noreferrer" target="_blank">Phoenix Baccarat</a></td>
+      <td><img src="https://secure.equinesa.net/assets/uploads/classifieds/img/breeds/warmblood/41544-Photo1_frame.jpg" alt="image" style="width:100px;height:100px;"></td>
+      <td>Mare</td>
+      <td>14</td>
+      <td>17.0HH (1.72m)</td>
+      <td>Warmblood</td>
+      <td>90 k</td>
+      <td>5 h 02 m</td>
+      <td>Plettenberg Bay, South Africa</td>
+      <td>January 20 2022</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td><a href="https://secure.equinesa.net/horses-for-sale/detail/41550" rel="noopener noreferrer" target="_blank">Rancho Dollorado</a></td>
+      <td><img src="https://secure.equinesa.net/assets/uploads/classifieds/img/breeds/american_paint_horse/41550-Photo1_frame.jpg" alt="image" style="width:100px;height:100px;"></td>
+      <td>Mare</td>
+      <td>11</td>
+      <td>16.0HH (1.62m)</td>
+      <td>Paint X Quarter Horse</td>
+      <td>170 k</td>
+      <td>1 h 41 m</td>
+      <td>Hout Bay, Cape Town, South Africa</td>
+      <td>August 09 2022</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td><a href="https://secure.equinesa.net/horses-for-sale/detail/41610" rel="noopener noreferrer" target="_blank">Razdi Rhondante</a></td>
+      <td><img src="https://secure.equinesa.net/assets/uploads/classifieds/img/breeds/warmblood_sa/41610-Photo1_frame.jpg" alt="image" style="width:100px;height:100px;"></td>
+      <td>Gelding</td>
+      <td>11</td>
+      <td>16.1HH (1.65m) ±</td>
+      <td>SA Warmblood</td>
+      <td>180 k</td>
+      <td>2 h 26 m</td>
+      <td>Overberg DC, South Africa</td>
+      <td>July 05 2022</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td><a href="https://secure.equinesa.net/horses-for-sale/detail/41609" rel="noopener noreferrer" target="_blank">Ventana Class Act</a></td>
+      <td><img src="https://secure.equinesa.net/assets/uploads/classifieds/img/breeds/american_saddlebred_horse/41609-Photo1_frame.jpg" alt="image" style="width:100px;height:100px;"></td>
+      <td>Mare</td>
+      <td>10</td>
+      <td>16.1HH (1.65m)</td>
+      <td>SA Saddlebred</td>
+      <td>250 k</td>
+      <td>1 h 19 m</td>
+      <td>Stellenbosch, South Africa</td>
+      <td>June 27 2022</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td><a href="https://secure.equinesa.net/horses-for-sale/detail/41555" rel="noopener noreferrer" target="_blank">Davie Bowy</a></td>
+      <td><img src="https://secure.equinesa.net/assets/uploads/classifieds/img/breeds/thoroughbred/41555-Photo1_frame.jpg" alt="image" style="width:100px;height:100px;"></td>
+      <td>Gelding</td>
+      <td>14</td>
+      <td>16.1HH (1.65m)</td>
+      <td>Thoroughbred</td>
+      <td>Not mentioned</td>
+      <td>7 h 25 m</td>
+      <td>Gqeberha, South Africa</td>
+      <td>February 07 2022</td>
+    </tr>
+  </tbody>
+</table>
+  </body>
+</html>.
