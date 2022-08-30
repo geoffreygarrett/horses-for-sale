@@ -217,8 +217,15 @@ html_string = '''
   <link rel="stylesheet" type="text/css" href="style.css"/>
   <body>
     <h2><b>Horses for sale in proximinity of the Overberg District, WC</b></h2>
-    <p><b>Last updated:</b> {last_updated}</p>
+    <p><b>Time updated:</b> {last_updated}</p>
     <p><b>Horses found:</b> {horses_found}</p>
+    <p><b>Sort by</b> 
+        <select id="sort_by" onchange="sort_by_change()">
+            <option value="price">Price</option>
+            <option value="driving_time">Driving time</option>
+            <option value="listing_age">Listing age</option>
+        </select>
+    </p>
     <p>Feel free to leave feedback through one of the icons below.</p>
     <p><a href="https://github.com/geoffreygarrett/horses-for-sale" target="_blank"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:40px;height:40px;"></a></p>
     {table}
