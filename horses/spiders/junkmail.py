@@ -35,12 +35,12 @@ class JunkMail(scrapy.Spider):
             except IndexError:
                 v = None
             zipped.append((k,v))
-
+        price = response.xpath("//*/div[@class='h3 m-t m-b-0 theme-text']/b/text()").get()
         yield {
             "link": response.url,
             "name": response.xpath("//*/div[@class='m-y-0 h3']/h1/text()").get().strip(),
             "details": dict(zipped),
-            "price": response.xpath("//*/div[@class='h3 m-t m-b-0 theme-text']/b/text()").get().strip(),
+            "price": price.strip() if price else None,
 #             "price": response.xpath("//*/div[@class='pull-left']/*/h4/text()").get(),
 #             "location": response.xpath("//*/div[@class='panel panel-default map-panel']/div[@class='panel-footer']//text()")[1].get().strip(),
 #             "details": dict(
