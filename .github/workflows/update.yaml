@@ -25,6 +25,7 @@ jobs:
 
       - name: "Install Playwright"
         run: |
+          pip install playwright
           python -m playwright install
 
       - name: "Scrape new content"
