@@ -11,6 +11,9 @@ jobs:
   update-site:
     name: Update site
     runs-on: ubuntu-18.04
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
       - name: "Clone repository"
         uses: actions/checkout@v2
