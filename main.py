@@ -9,7 +9,7 @@ client = pymongo.MongoClient(MONGO_URI)
 db = client[MONGO_DATABASE]
 
 # get collection
-collection = db['testing']
+collection = db['horses']
 
 # get all items
 items = list(collection.find())
