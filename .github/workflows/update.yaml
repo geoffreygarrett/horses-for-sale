@@ -1,6 +1,6 @@
-name: Updates https://geoffreygarrett.github.io/horses-for-sale/
+name: "Updates https://geoffreygarrett.github.io/horses-for-sale/"
 on:
-  workflow_dispatch
+  workflow_dispatch:
   push:
     branches:
       - master
