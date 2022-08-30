@@ -1,6 +1,7 @@
 name: horses
 
 dependencies:
+  - python=3.10
   - pip
   - pip:
     - pymongo[srv]
