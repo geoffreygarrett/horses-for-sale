@@ -216,13 +216,18 @@ html_string = '''
   </head>
   <link rel="stylesheet" type="text/css" href="style.css"/>
   <body>
-    <p>Last updated: {last_updated}</p>
+    <h2><b>Horses for sale in proximinity of the Overberg District, WC</b></h2>
+    <p><b>Last updated:</b> {last_updated}</p>
+    <p><b>Horses found:</b> {horses_found}</p>
+    <p>Feel free to leave feedback through one of the icons below.</p>
+    <p><a href="https://github.com/geoffreygarrett/horses-for-sale" target="_blank"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:40px;height:40px;"></a></p>
     {table}
   </body>
 </html>.
 '''
-
-html_table = df.to_html(render_links=True, classes='mystyle', escape=False)
+# remove underscores from column names
+df.columns = [x.replace('_', ' ') for x in df.columns]
+html_table = df.to_html(render_links=True, classes='mystyle', escape=False, index=False)
 import shutil
 
 # if out doesnt exist, create it
@@ -234,8 +239,10 @@ if not os.path.exists("out"):
 # OUTPUT AN HTML FILE
 # format date to day name month name year hour minute second timezone
 last_updated = datetime.datetime.now().strftime('%B %d %Y %H:%M:%S SAST')
+horses_found = len(df)
 with open('out/index.html', 'w') as f:
-    f.write(html_string.format(table=html_table, last_updated=last_updated))
+    f.write(html_string.format(table=html_table, last_updated=last_updated,
+    horses_found=horses_found))
 
 # copy style.css from styles/ to out/
 shutil.copyfile('styles/style.css', 'out/style.css')

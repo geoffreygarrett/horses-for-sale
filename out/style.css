@@ -20,10 +20,15 @@
 /* 
 .mystyle table, th, td {
   /* border: 1px solid black; */
-}
+/* } */
+
 .mystyle th {
   cursor: pointer;
-} */
+} 
+
+h1 {
+  text-align:center !important;
+}
 
 @media only screen and (max-width: 40em) {
   .mystyle thead th:not(:first-child) {
