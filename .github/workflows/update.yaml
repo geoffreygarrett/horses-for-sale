@@ -35,7 +35,7 @@ jobs:
       - name: "Install Playwright"
         run: |
           conda activate horses
-          playwright install
+          python -m playwright install chromium
 
       - name: "Scrape new content"
         run: |

@@ -178,6 +178,7 @@ with open('out/index.html', 'w') as f:
 
 # copy style.css from styles/ to out/
 shutil.copyfile('styles/style.css', 'out/style.css')
+shutil.copyfile('js/script.js', 'out/script.js')
 
 # "output.html", 
 # os.system("xdg-open out/index.html")
