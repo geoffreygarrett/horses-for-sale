@@ -20,10 +20,11 @@ jobs:
       - name: "Setup miniconda"
         uses: conda-incubator/setup-miniconda@v2
         with:
+          auto-update-conda: true
           activate-environment: horses
           environment-file: environment.yaml
           auto-activate-base: false
-          python-version: 3.10
+          python-version: "3.10"
 
       - name: "Install Playwright"
         run: |
