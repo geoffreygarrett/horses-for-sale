@@ -75,21 +75,7 @@ pd.set_option('display.expand_frame_repr', False)
 # print(df)
 
 
-# reorder columns
-df = df[['name', 
-# 'ref',
-# 'sold',
-'image',
-'gender', 
-'age', 
-'height', 
-'breed', 
-'price', 
-'driving_time', 
-'location',
-'listing_date', 
-# 'link'
-]]
+
 
 
 # convert to teimdelta from hours if not float NaN
@@ -127,6 +113,50 @@ df['price'] = df['price'].apply(lambda x: format_price(x) if type(x)==float else
 def format_date(date):
     return datetime.datetime.strftime(date, '%B %d %Y')
 
+def format_timedelta(td):
+    minutes, seconds = divmod(td.seconds + td.days * 86400, 60)
+    hours, minutes = divmod(minutes, 60)
+    return '{:d} h {:02d} m'.format(hours, minutes, seconds)
+    # return '{:d}:{:02d}:{:02d}'.format(hours, minutes, seconds)
+
+def largest_unit(td):
+    if td.days > 0:
+        return td.days
+    elif td.hours > 0:
+        return td.hours
+    elif td.minutes > 0:
+        return td.minutes
+    elif td.seconds > 0:
+        return td.seconds
+    else:
+        return None
+
+def format_added_timedelta(td):
+    unit = largest_unit(td)
+    if unit == td.days:
+        # check for months
+        if td.days > 30:
+            ret = "{} month".format(int(td.days/30))
+            unit = int(td.days/30)
+        else:
+            ret = '{} day'.format(td.days)
+    elif unit == td.hours:
+        ret = '{} hour'.format(td.hours)
+    elif unit == td.minutes:
+        ret = '{} minute'.format(td.minutes)
+    elif unit == td.seconds:
+        ret = '{} second'.format(td.seconds)
+    else:
+        ret = None
+    
+    # check for plural
+    if ret and unit > 1:
+        ret += 's'
+    return ret
+
+
+# add column for time delta "added" in days hours ago
+df['listing_age'] = df['listing_date'].apply(lambda x: format_added_timedelta(datetime.datetime.now() - x))
 df['listing_date'] = df['listing_date'].apply(lambda x: format_date(x) if x else None)
 
 # where values are None, set to "N/A"
@@ -146,11 +176,7 @@ df.reset_index(drop=True, inplace=True)
 # format driving time to 1 decimal place
 # convert df['driving_time'] to timedelta
 
-def format_timedelta(td):
-    minutes, seconds = divmod(td.seconds + td.days * 86400, 60)
-    hours, minutes = divmod(minutes, 60)
-    return '{:d} h {:02d} m'.format(hours, minutes, seconds)
-    # return '{:d}:{:02d}:{:02d}'.format(hours, minutes, seconds)
+
 df['driving_time'] = df['driving_time'].apply(lambda x: format_timedelta(x))
 
 # round to 1 
@@ -164,6 +190,21 @@ def round_driving_time(td):
 # df['driving_time'] = df['driving_time'].round(1)
 
 # change all NoneType values to N/A
+# reorder columns
+df = df[['name', 
+# 'ref',
+# 'sold',
+'image',
+'gender', 
+'age', 
+'height', 
+'breed', 
+'price', 
+'driving_time', 
+'location',
+'listing_age', 
+# 'link'
+]]
 df = df.replace("None", 'N/A')
 
 # save as html and open
