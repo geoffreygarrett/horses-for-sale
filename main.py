@@ -191,7 +191,8 @@ if not os.path.exists("out"):
 # for v in df['price'].values:
 #     print(v)
 # OUTPUT AN HTML FILE
-last_updated = datetime.datetime.now().strftime("%d %B %Y")
+# format date to day name month name year hour minute second timezone
+last_updated = datetime.datetime.now().strftime('%B %d %Y %H:%M:%S SAST')
 with open('out/index.html', 'w') as f:
     f.write(html_string.format(table=html_table, last_updated=last_updated))
 
