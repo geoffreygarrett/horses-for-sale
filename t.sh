@@ -4,7 +4,7 @@
 git init
 
 # set remote to the url https://github.com/geoffreygarrett/horses-for-sale.git
-git remote add origin git@github.com:geoffreygarrett/horses-for-sale.git
+git remote add origin https://github.com/geoffreygarrett/horses-for-sale.git
 
 # verify
 git remote -v
