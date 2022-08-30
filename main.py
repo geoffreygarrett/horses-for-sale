@@ -266,6 +266,6 @@ with open('out/last_updated.txt', 'w') as f:
 # shutil.copyfile('template/deploy-pages.yaml', 'out/.github/workflows/deploy-pages.yaml',)
 
 # "output.html", 
-# os.system("xdg-open out/index.html")
+os.system("xdg-open out/index.html")
         
 
