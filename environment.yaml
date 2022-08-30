@@ -4,11 +4,12 @@ channels:
   - defaults
 
 dependencies:
+  - python=3.1
   - pip
   - pip:
+    - playwright
     - pymongo[srv]
     - scrapy
     - scrapy-playwright
     - py3-validate-email
     - requests
-    - playwright
