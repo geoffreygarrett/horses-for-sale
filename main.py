@@ -219,7 +219,7 @@ html_string = '''
     <h2><b>Horses for sale in proximinity of the Overberg District, WC</b></h2>
     <p><b>Time updated:</b> {last_updated}</p>
     <p><b>Horses found:</b> {horses_found}</p>
-    <p><b>Sort by</b> 
+    <p><b>Sort by (in development) </b> 
         <select id="sort_by" onchange="sort_by_change()">
             <option value="price">Price</option>
             <option value="driving_time">Driving time</option>
