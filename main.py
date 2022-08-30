@@ -257,7 +257,7 @@ shutil.copyfile('js/script.js', 'out/script.js')
 
 # write last updated to file
 with open('out/last_updated.txt', 'w') as f:
-    f.write(datetime.datetime.now())
+    f.write(last_updated)
 
 
 # copy template/deploy-pages.yaml to out/.github/workflows/deploy-pages.yaml creating if necessary
