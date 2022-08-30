@@ -1,7 +1,5 @@
-from http import cookiejar
 import scrapy
 from scrapy_playwright.page import PageMethod
-from ..items import HorseItemL0
 
 
 class Gumtree(scrapy.Spider):
