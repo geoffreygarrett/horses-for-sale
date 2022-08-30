@@ -37,7 +37,19 @@ jobs:
           conda activate horses
           python -m playwright install chromium
 
-      - name: "Scrape new content"
+      - name: "Scrape equinesa"
+        run: |
+          scrapy crawl equinesa
+
+      - name: "Scrape junkmail"
+        run: |
+          scrapy crawl junkmail
+
+      - name: "Scrape gumtree"
+        run: |
+          scrapy crawl gumtree
+
+      - name: "Generate new site"
         run: |
           python main.py
 
