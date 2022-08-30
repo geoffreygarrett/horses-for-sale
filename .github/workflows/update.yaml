@@ -11,6 +11,10 @@ jobs:
   update-site:
     name: Update site
     runs-on: ubuntu-18.04
+    env:
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+      AUTH_KEY_GEOCODING: ${{ secrets.AUTH_KEY_GEOCODING }}
+      AUTH_KEY_DISTANCE_MATRIX: ${{ secrets.AUTH_KEY_DISTANCE_MATRIX }}
     defaults:
       run:
         shell: bash -l {0}
