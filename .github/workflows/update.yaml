@@ -1,9 +1,9 @@
 name: Updates https://geoffreygarrett.github.io/horses-for-sale/
 on:
-  - workflow_dispatch
-  - push:
-      branches:
-        - main
+  workflow_dispatch
+  push:
+    branches:
+      - main
 
 jobs:
   update-site:
