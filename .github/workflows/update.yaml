@@ -27,8 +27,8 @@ jobs:
 
       - name: "Install Playwright"
         run: |
-          pip install playwright
-          python -m playwright install
+          conda activate horses
+          playwright install
 
       - name: "Scrape new content"
         run: |
