@@ -1,0 +1,35 @@
+name: Updates https://geoffreygarrett.github.io/horses-for-sale/
+on:
+  - workflow_dispatch
+  - push:
+      branches:
+        - main
+
+jobs:
+  update-site:
+    name: setup
+    runs-on: ubuntu-18.04
+    steps:
+      - name: "Setup miniconda"
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: horses
+          environment-file: environment.yaml
+
+      - name: "Install Playwright"
+        run: |
+          playwright install
+
+      - name: "Clone repository"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: "Push to gh-pages branch"
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: gh-pages # The branch name where you want to push the assets
+          FOLDER: out # The directory where your assets are generated
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
+          MESSAGE: "Build: ({sha}) {msg}" # The commit message

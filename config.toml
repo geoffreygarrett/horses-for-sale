@@ -1,0 +1,6 @@
+sites = [
+#    "https://www.gumtree.co.za/s-horses-ponies/western-cape/horses+for+sale/v1c9141l3100001q0p1",
+    "https://secure.equinesa.net/horses-for-sale/listings/all",
+#    "https://www.facebook.com/groups/1492885717598959/",
+#    "https://www.junkmail.co.za/pets/horses-and-ponies"
+]

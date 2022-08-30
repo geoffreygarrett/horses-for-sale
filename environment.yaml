@@ -1,0 +1,9 @@
+name: horses
+
+dependencies:
+  - pip:
+    - pymongo[srv]
+    - scrapy
+    - scrapy-playwright
+    - py3-validate-email
+    - requests
