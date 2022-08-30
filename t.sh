@@ -16,4 +16,4 @@ git add .
 git commit -m "initial commit"
 
 # force push to remote repo
-git push -f origin master
+git push -f origin main
