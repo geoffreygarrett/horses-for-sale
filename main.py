@@ -1,4 +1,3 @@
-import toml
 import pymongo
 from horses.settings import MONGO_DATABASE, MONGO_URI
 import re 
