@@ -248,6 +248,11 @@ with open('out/index.html', 'w') as f:
 shutil.copyfile('styles/style.css', 'out/style.css')
 shutil.copyfile('js/script.js', 'out/script.js')
 
+# copy template/deploy-pages.yaml to out/.github/workflows/deploy-pages.yaml creating if necessary
+if not os.path.exists("out/.github/workflows"):
+    os.makedirs("out/.github/workflows")
+shutil.copyfile('template/deploy-pages.yaml', 'out/.github/workflows/deploy-pages.yaml',)
+
 # "output.html", 
 os.system("xdg-open out/index.html")
         
