@@ -25,7 +25,10 @@ jobs:
 
       - name: "Install Playwright"
         run: |
+          pip install playwright
           python -m playwright install
+
+      - name: "Scrape new content"
 
       - name: "Push to gh-pages branch"
         uses: s0/git-publish-subdir-action@develop
