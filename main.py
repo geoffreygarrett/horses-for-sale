@@ -91,11 +91,19 @@ df = df[['name',
 # 'link'
 ]]
 
-#
-# df['driving_time'] = df['driving_time'].apply(lambda x: datetime.timedelta(hours=x))
+
+# convert to teimdelta from hours if not float NaN
+def convert_to_timedelta(hours):
+    try:
+        return datetime.timedelta(hours=hours)
+    except:
+        return None
+
+df['driving_time'] = df['driving_time'].apply(lambda x: convert_to_timedelta(x))
+
 #
 # # filter driving time more than 8 hours
-# df = df[df['driving_time'] < datetime.timedelta(hours=12)]
+df = df[df['driving_time'] < datetime.timedelta(hours=12)]
 
 # where price is string, set as infinity
 df['price'] = df['price'].apply(lambda x: int(10e9) if type(x)==str else x)
@@ -143,7 +151,16 @@ def format_timedelta(td):
     hours, minutes = divmod(minutes, 60)
     return '{:d} h {:02d} m'.format(hours, minutes, seconds)
     # return '{:d}:{:02d}:{:02d}'.format(hours, minutes, seconds)
-# df['driving_time'] = df['driving_time'].apply(lambda x: format_timedelta(x))
+df['driving_time'] = df['driving_time'].apply(lambda x: format_timedelta(x))
+
+# round to 1 
+# try round driving time to 1 decimal else set to N/A
+def round_driving_time(td):
+    try:
+        return pd.round(td.seconds/60, 1)
+    except:
+        return None
+        
 # df['driving_time'] = df['driving_time'].round(1)
 
 # change all NoneType values to N/A
@@ -181,6 +198,6 @@ shutil.copyfile('styles/style.css', 'out/style.css')
 shutil.copyfile('js/script.js', 'out/script.js')
 
 # "output.html", 
-# os.system("xdg-open out/index.html")
+os.system("xdg-open out/index.html")
         
 

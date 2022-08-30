@@ -192,7 +192,7 @@ class HorsesPipeline:
 class MongoPipeline:
     # def process_item(self, item, spider):
     #     return item
-    collection_name = 'testing'
+    collection_name = 'horses'
 
     def __init__(self, mongo_uri, mongo_db):
         self.mongo_uri = mongo_uri
@@ -222,7 +222,17 @@ class MongoPipeline:
         #     self.db[self.collection_name].update_one({'name': item['name']}, {'$set': item})
 
         if self.db[self.collection_name].count_documents({'name': item['name']}):
-            print("**Error: You're already in the database**")
+            print("**You're already in the database**")
+            # check for differences for all keys
+            for key in item:
+                if self.db[self.collection_name].find_one({'name': item['name']})[key] != item[key]:
+                    print("**Difference found, updating and adding parent**")
+                    # if different, update the item, and add parent_id to new item
+                    item['parent_id'] = self.db[self.collection_name].find_one({'name': item['name']})['_id']
+
+                    self.db[self.collection_name].update_one({'name': item['name']}, {'$set': item})
+                    break
+
         else:
             print("**Adding new inventory to the database**")
             self.db[self.collection_name].insert_one(ItemAdapter(item).asdict())
