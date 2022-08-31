@@ -7,8 +7,7 @@ const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
 // do the work...
 document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
     const table = th.closest('table');
-    const tbody = table.querySelector('tbody');
-    Array.from(tbody.querySelectorAll('tr'))
-      .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
-      .forEach(tr => tbody.appendChild(tr) );
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+        .forEach(tr => table.appendChild(tr) );
 })));
