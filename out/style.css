@@ -1,0 +1,193 @@
+/* includes alternating gray and white with on-hover color */
+
+/* .mystyle {
+    font-size: 11pt; 
+    font-family: Arial;
+    border-collapse: collapse; 
+    border: 1px solid silver;
+
+}
+
+.mystyle td, th {
+    padding: 5px;
+}
+
+.mystyle tr:nth-child(even) {
+    background: #E0E0E0;
+}
+*/
+
+/* 
+.mystyle table, th, td {
+  /* border: 1px solid black; */
+/* } */
+
+.mystyle th {
+  cursor: pointer;
+} 
+
+h1 {
+  text-align:center !important;
+}
+
+@media only screen and (max-width: 40em) {
+  .mystyle thead th:not(:first-child) {
+      display: none;
+  }
+
+  .mystyle td, th {
+      display: block;
+  }
+
+  /* td[data-th]:before  {
+      content: attr(data-th);
+  } */
+}
+.mystyle tr:hover {
+    background: #F0F0F0;
+    cursor: pointer;
+} 
+
+.mystyle {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .mystyle caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+  
+  .mystyle tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+  }
+  
+  .mystyle th,
+  .mystyle td {
+    padding: .625em;
+    text-align: center;
+  }
+  
+  .mystyle th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  
+  @media all and (max-width: 760px) {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block	!important;
+  
+    
+    
+    }
+
+    .mystyle {
+      border: 0;
+    }
+  
+    .mystyle caption {
+      font-size: 1.3em;
+    }
+    
+    .mystyle thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    .mystyle tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    .mystyle td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    .mystyle td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a .mystyle
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    .mystyle td:last-child {
+      border-bottom: 0;
+    }
+  }
+  
+ @media 
+only screen and (max-width: 760px),
+(min-device-width: 300px) and (max-device-width: 800px)  {
+
+	/* Force table to not be like tables anymore */
+	.mystyle table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	.mystyle thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	.mystyle tr { border: 1px solid #ccc; }
+	
+	.mystyle td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	.mystyle td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "NAME"; }
+	td:nth-of-type(2):before { content: "IMAGE"; }
+	td:nth-of-type(3):before { content: "GENDER"; }
+	td:nth-of-type(4):before { content: "AGE"; }
+	td:nth-of-type(5):before { content: "HEIGHT"; }
+	td:nth-of-type(6):before { content: "BREED"; }
+	td:nth-of-type(7):before { content: "PRICE"; }
+	td:nth-of-type(8):before { content: "DRIVING TIME"; }
+	td:nth-of-type(9):before { content: "LOCATION"; }
+	td:nth-of-type(10):before { content: "LISTING AGE"; }
+} 
