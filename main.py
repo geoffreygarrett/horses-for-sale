@@ -91,45 +91,46 @@ df['driving_time'] = df['driving_time'].apply(lambda x: convert_to_timedelta(x))
 # # filter driving time more than 8 hours
 df = df[df['driving_time'] < datetime.timedelta(hours=12)]
 
-# where price is string, set as infinity
-df['price'] = df['price'].apply(lambda x: int(10e9) if type(x)==str else x)
+# # where price is string, set as infinity
+# df['price'] = df['price'].apply(lambda x: int(10e9) if type(x)==str else x)
 
 # sort price ascending
-df = df.sort_values(by='price', ascending=True)
+# df = df.sort_values(by='price', ascending=True)
 
-# format price as <thousands> k
-def format_price(price):
-    # if price is 10e9, set as 'Not mentioned'
-    if price == 10e9:
-        return 'Not mentioned'
-    elif price:
-        return "{} k".format(int(price/1000))
-    else:
-        return None
+# # format price as <thousands> k
+# def format_price(price):
+#     # if price is 10e9, set as 'Not mentioned'
+#     if price == 10e9:
+#         return 'Not mentioned'
+#     elif price:
+#         return "{} k".format(int(price/1000))
+#     else:
+#         return None
 
-df['price'] = df['price'].apply(lambda x: format_price(x) if type(x)==float else None)
+# df['price'] = df['price'].apply(lambda x: format_price(x) if type(x)==float else None)
 
 # format date to day name month name year
-def format_date(date):
-    return datetime.datetime.strftime(date, '%B %d %Y')
+# def format_date(date):
+#     return datetime.datetime.strftime(date, '%B %d %Y')
 
-def format_timedelta(td):
-    minutes, seconds = divmod(td.seconds + td.days * 86400, 60)
-    hours, minutes = divmod(minutes, 60)
-    return '{:d} h {:02d} m'.format(hours, minutes, seconds)
+
+# def format_timedelta(td):
+#     minutes, seconds = divmod(td.seconds + td.days * 86400, 60)
+#     hours, minutes = divmod(minutes, 60)
+#     return '{:d} h {:02d} m'.format(hours, minutes, seconds)
     # return '{:d}:{:02d}:{:02d}'.format(hours, minutes, seconds)
 
-def largest_unit(td):
-    if td.days > 0:
-        return td.days
-    elif td.hours > 0:
-        return td.hours
-    elif td.minutes > 0:
-        return td.minutes
-    elif td.seconds > 0:
-        return td.seconds
-    else:
-        return None
+# def largest_unit(td):
+#     if td.days > 0:
+#         return td.days
+#     elif td.hours > 0:
+#         return td.hours
+#     elif td.minutes > 0:
+#         return td.minutes
+#     elif td.seconds > 0:
+#         return td.seconds
+#     else:
+#         return None
 
 # def format_added_timedelta(td):
 #     unit = largest_unit(td)
@@ -160,7 +161,7 @@ def format_added_timedelta(td):
 
 # add column for time delta "added" in days hours ago
 df['listing_age'] = df['listing_date'].apply(lambda x: format_added_timedelta(datetime.datetime.now() - x))
-df['listing_date'] = df['listing_date'].apply(lambda x: format_date(x) if x else None)
+# df['listing_date'] = df['listing_date'].apply(lambda x: format_date(x) if x else None)
 
 # where values are None, set to "N/A"
 msg = "N/A"
@@ -180,17 +181,7 @@ df.reset_index(drop=True, inplace=True)
 # convert df['driving_time'] to timedelta
 
 
-df['driving_time'] = df['driving_time'].apply(lambda x: format_timedelta(x))
-
-# round to 1 
-# try round driving time to 1 decimal else set to N/A
-def round_driving_time(td):
-    try:
-        return pd.round(td.seconds/60, 1)
-    except:
-        return None
-        
-# df['driving_time'] = df['driving_time'].round(1)
+df['driving_time'] = df['driving_time'].apply(lambda x: x.seconds)
 
 # change all NoneType values to N/A
 # reorder columns
@@ -230,10 +221,17 @@ html_string = '''
 </html>
 '''
 
+# rename 'listing age' colum to 'Listing age (days)'
+# df.rename(columns={'listing_age': 'Listing age (days)'}, inplace=True)
+
 # remove underscores from column names
 df.columns = [x.replace('_', ' ') for x in df.columns]
 html_table = df.to_html(render_links=True, classes='mystyle', escape=False, index=False)
 import shutil
+
+
+
+print(df.columns)
 
 # if out doesnt exist, create it
 if not os.path.exists("out"):
