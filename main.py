@@ -213,7 +213,7 @@ html_string = '''
     <h2><b>Horses for sale in proximinity of the Overberg District, WC</b></h2>
     <p><b>Time updated:</b> {last_updated}</p>
     <p><b>Horses found:</b> {horses_found}</p>
-    <p>Click on a column header to sort. Currently sorting lexicographically, will fix this later. </p>
+    <p><b>Click on a column header to sort.</b> </p>
     <p>Feel free to leave feedback through one of the icons below.</p>
     <p><a href="https://github.com/geoffreygarrett/horses-for-sale" target="_blank"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:40px;height:40px;"></a></p>
     {table}
