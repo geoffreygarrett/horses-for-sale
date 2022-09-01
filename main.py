@@ -131,30 +131,32 @@ def largest_unit(td):
     else:
         return None
 
-def format_added_timedelta(td):
-    unit = largest_unit(td)
-    if unit == td.days:
-        # check for months
-        if td.days > 30:
-            ret = "{} month".format(int(td.days/30))
-            unit = int(td.days/30)
-        else:
-            ret = '{} day'.format(td.days)
-    elif unit == td.hours:
-        ret = '{} hour'.format(td.hours)
-    elif unit == td.minutes:
-        ret = '{} minute'.format(td.minutes)
-    elif unit == td.seconds:
-        ret = '{} second'.format(td.seconds)
-    else:
-        ret = None
+# def format_added_timedelta(td):
+#     unit = largest_unit(td)
+#     if unit == td.days:
+#         # check for months
+#         if td.days > 30:
+#             ret = "{} month".format(int(td.days/30))
+#             unit = int(td.days/30)
+#         else:
+#             ret = '{} day'.format(td.days)
+#     elif unit == td.hours:
+#         ret = '{} hour'.format(td.hours)
+#     elif unit == td.minutes:
+#         ret = '{} minute'.format(td.minutes)
+#     elif unit == td.seconds:
+#         ret = '{} second'.format(td.seconds)
+#     else:
+#         ret = None
     
-    # check for plural
-    if ret and unit > 1:
-        ret += 's'
-    return ret
+#     # check for plural
+#     if ret and unit > 1:
+#         ret += 's'
+#     return ret
 
-
+def format_added_timedelta(td):
+    # unit = largest_unit(td)
+    return int(td.days)
 
 # add column for time delta "added" in days hours ago
 df['listing_age'] = df['listing_date'].apply(lambda x: format_added_timedelta(datetime.datetime.now() - x))
@@ -251,9 +253,9 @@ with open('out/index.html', 'w') as f:
 shutil.copyfile('styles/style.css', 'out/style.css')
 shutil.copyfile('js/script.js', 'out/script.js')
 
-# write last updated to file
-with open('out/last_updated.txt', 'w') as f:
-    f.write(last_updated)
+# # write last updated to file
+# with open('out/last_updated.txt', 'w') as f:
+#     f.write(last_updated)
 
 
 # copy template/deploy-pages.yaml to out/.github/workflows/deploy-pages.yaml creating if necessary
