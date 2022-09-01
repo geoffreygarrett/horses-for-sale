@@ -155,6 +155,7 @@ def format_added_timedelta(td):
     return ret
 
 
+
 # add column for time delta "added" in days hours ago
 df['listing_age'] = df['listing_date'].apply(lambda x: format_added_timedelta(datetime.datetime.now() - x))
 df['listing_date'] = df['listing_date'].apply(lambda x: format_date(x) if x else None)
@@ -226,6 +227,7 @@ html_string = '''
   </body>
 </html>
 '''
+
 # remove underscores from column names
 df.columns = [x.replace('_', ' ') for x in df.columns]
 html_table = df.to_html(render_links=True, classes='mystyle', escape=False, index=False)
