@@ -213,6 +213,23 @@ html_string = '''
     <h2><b>Horses for sale in proximinity of the Overberg District, WC</b></h2>
     <p><b>Time updated:</b> {last_updated}</p>
     <p><b>Horses found:</b> {horses_found}</p>
+    <!-- add a field for filtering a column value from a drop down -->
+    <div class="filter">
+      <label for="filter">Filter by:</label>
+      <select id="filter" name="filter">
+        <option value="all">All</option>
+        <option value="price">Price</option>
+        <option value="age">Age</option>
+        <option value="height">Height</option>
+        <option value="breed">Breed</option>
+        <option value="location">Location</option>
+      </select>
+      <label for="min">Min:</label>
+      <input type="text" id="min" name="min" value="0">
+      <label for="max">Max:</label>
+      <input type="text" id="max" name="max" value="100000">
+      <button id="filter-btn">Filter</button>
+    </div>
     <p><b>Click on a column header to sort.</b> </p>
     <p>Feel free to leave feedback through one of the icons below.</p>
     <p><a href="https://github.com/geoffreygarrett/horses-for-sale" target="_blank"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:40px;height:40px;"></a></p>
