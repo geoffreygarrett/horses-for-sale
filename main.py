@@ -89,7 +89,7 @@ df['driving_time'] = df['driving_time'].apply(lambda x: convert_to_timedelta(x))
 
 #
 # # filter driving time more than 8 hours
-df = df[df['driving_time'] < datetime.timedelta(hours=12)]
+#df = df[df['driving_time'] < datetime.timedelta(hours=12)]
 
 # # where price is string, set as infinity
 # df['price'] = df['price'].apply(lambda x: int(10e9) if type(x)==str else x)
