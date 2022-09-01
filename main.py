@@ -257,9 +257,9 @@ with open('out/last_updated.txt', 'w') as f:
 
 
 # copy template/deploy-pages.yaml to out/.github/workflows/deploy-pages.yaml creating if necessary
-# if not os.path.exists("out/.github/workflows"):
-#     os.makedirs("out/.github/workflows")
-# shutil.copyfile('template/deploy-pages.yaml', 'out/.github/workflows/deploy-pages.yaml',)
+if not os.path.exists("out/.github/workflows"):
+    os.makedirs("out/.github/workflows")
+shutil.copyfile('template/deploy-pages.yaml', 'out/.github/workflows/deploy-pages.yaml',)
 
 # "output.html", 
 os.system("xdg-open out/index.html")
