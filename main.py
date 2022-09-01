@@ -215,7 +215,7 @@ html_string = '''
     <p><b>Horses found:</b> {horses_found}</p>
     <!-- add a field for filtering a column value from a drop down -->
     <div id="filter">
-      <button id="add_filter", onclick="add_filter()">Add filter</button>
+      <button id="add_filter", onclick="addFilter()">Add filter</button>
     </div>
     <p><b>Click on a column header to sort.</b> </p>
     <p>Feel free to leave feedback through one of the icons below.</p>

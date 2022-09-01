@@ -36,8 +36,9 @@ const formatPrice = (price) => {
         return "Not mentioned";
     }
     const thousands = Math.floor(intValue / 1000);
-    return thousands + " KZAR";
+    return "kR " + thousands;
 }
+
 
 const formatTimeDelta = (seconds) => {
     // format seconds in 'hour' h, 'minute' m, if hours > 0, otherwise 'minute' m
@@ -50,14 +51,113 @@ const formatTimeDelta = (seconds) => {
 
 }
 
+const addFilter = () => {
+    // add filter to column by name in innerText
+    // add a drop down to all column names found in headers, adding a min and max fields
+    // add a button to apply the filter
+    // add a button to clear the filter
+    // add a button to clear all filters
+    const table = document.querySelector('table');
+    const thead = table.querySelector('thead');
+    const headers = thead.querySelectorAll('th');
+    const tbody = table.querySelector('tbody');
+    const rows = tbody.querySelectorAll('tr');
+    const filterDiv = document.createElement('div');
+    filterDiv.setAttribute('id', 'filter-div');
+    const filterTable = document.createElement('table');
+    filterTable.setAttribute('id', 'filter-table');
+    const filterTableBody = document.createElement('tbody');
+    filterTableBody.setAttribute('id', 'filter-table-body');
+    filterTable.appendChild(filterTableBody);
+    filterDiv.appendChild(filterTable);
+    const filterButtonDiv = document.createElement('div');
+    filterButtonDiv.setAttribute('id', 'filter-button-div');
+    const filterButton = document.createElement('button');
+    filterButton.setAttribute('id', 'filter-button');
+    filterButton.innerText = "Filter";
+    filterButtonDiv.appendChild(filterButton);
+    const clearFilterButton = document.createElement('button');
+    clearFilterButton.setAttribute('id', 'clear-filter-button');
+    clearFilterButton.innerText = "Clear Filter";
+    filterButtonDiv.appendChild(clearFilterButton);
+    const clearAllFiltersButton = document.createElement('button');
+    clearAllFiltersButton.setAttribute('id', 'clear-all-filters-button');
+    clearAllFiltersButton.innerText = "Clear All Filters";
+    filterButtonDiv.appendChild(clearAllFiltersButton);
+    filterDiv.appendChild(filterButtonDiv);
+    const filterDivContainer = document.createElement('div');
+    filterDivContainer.setAttribute('id', 'filter-div-container');
+    filterDivContainer.appendChild(filterDiv);
+    table.parentNode.insertBefore(filterDivContainer, table);
+    for (let i = 0; i < headers.length; i++) {
+        const header = headers[i];
+        const headerText = header.innerText;
+        const row = document.createElement('tr');
+        const headerCell = document.createElement('td');
+        headerCell.innerText = headerText;
+        row.appendChild(headerCell);
+        const minCell = document.createElement('td');
+        const minInput = document.createElement('input');
+        minInput.setAttribute('id', 'min-' + headerText);
+        minInput.setAttribute('type', 'text');
+        minCell.appendChild(minInput);
+        row.appendChild(minCell);
+        const maxCell = document.createElement('td');
+        const maxInput = document.createElement('input');
+        maxInput.setAttribute('id', 'max-' + headerText);
+        maxInput.setAttribute('type', 'text');
+        maxCell.appendChild(maxInput);
+        row.appendChild(maxCell);
+        filterTableBody.appendChild(row);
+    }
+    const filter = () => {
+        for (let i = 0; i < headers.length; i++) {
+            const header = headers[i];
+            const headerText = header.innerText;
+            const minInput = document.querySelector('#min-' + headerText);
+            const maxInput = document.querySelector('#max-' + headerText);
+            const min = minInput.value;
+            const max = maxInput.value;
+            for (let j = 0; j < rows.length; j++) {
+                const row = rows[j];
+                const cell = row.children[i];
+                // value is 'data-sort-value' if it exists, otherwise innerText
+                const value = cell.getAttribute('data-sort-value') || cell.innerText;
+                if (min !== '' && value < min) {
+                    row.style.display = 'none';
+                } else if (max !== '' && value > max) {
+                    row.style.display = 'none';
+                } else {
+                    row.style.display = 'table-row';
+                }
+            }
+        }
+    }
+    const clearFilter = () => {
+        for (let i = 0; i < headers.length; i++) {
+            const header = headers[i];
+            const headerText = header.innerText;
+            const minInput = document.querySelector('#min-' + headerText);
+            const maxInput = document.querySelector('#max-' + headerText);
+            minInput.value = '';
+            maxInput.value = '';
+        }
+        for (let j = 0; j < rows.length; j++) {
+            const row = rows[j];
+            row.style.display = 'table-row';
+        }
+    }
+    const clearAllFilters = () => {
+        clearFilter();
+        filterDivContainer.style.display = 'none';
+    }
+    filterButton.addEventListener('click', filter);
+    clearFilterButton.addEventListener('click', clearFilter);
+    clearAllFiltersButton.addEventListener('click', clearAllFilters);
+}
 
 
 
-    // const total_minutes = Math.floor(hours * 60);
-    // const minutes = total_minutes % 60;
-    // const hours = Math.floor(total_minutes / 60);
-    // return hours > 0 ? hours + "h " + minutes + "m" : minutes + "m";
-// }
 
 const changeColumnFormat = (columnIndex, formatFunction) => {
     // change the format of the column at columnIndex to formatFunction and store the original value in data-sort-value
@@ -86,14 +186,15 @@ document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() =
     const table = th.closest('table');
     const tbody = table.querySelector('tbody');
 
-    // add up arrow for last clicked th if ascending, down arrow if descending
-    //  remove previous arrows
+    // remove previous arrows
     document.querySelectorAll('th').forEach(th => {
         th.innerHTML = th.innerHTML.replace("▲", "");
         th.innerHTML = th.innerHTML.replace("▼", "");
     });
+    // add up arrow for last clicked th if ascending, down arrow if descending
     th.innerHTML += this.asc ? " &#9660;" : " &#9650;";
 
+    // sort the table by the column of the clicked th
     Array.from(tbody.querySelectorAll('tr'))
       .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
       .forEach(tr => tbody.appendChild(tr) );
