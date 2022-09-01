@@ -140,3 +140,29 @@ h1 {
     }
   }
   
+  .up-arrow {
+    cursor: pointer;
+    /* height: 10px; */
+  }
+  
+  .down-arrow {
+    cursor: pointer;
+    
+  }
+
+  .arrows {
+    /* align div to right float */
+    float: right;
+    width: 50%;
+    /* dont allow overlap */
+    overflow: hidden;
+  }
+
+  .table-header {
+    /* align table header div to left */
+    float: left;
+    width: 50%;
+    /* dont allow overlap */
+    overflow: hidden;
+
+  }
